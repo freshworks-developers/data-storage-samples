@@ -8,7 +8,7 @@
   </head>
 
   <body>
-    <fw-textarea cols="70" rows="5" label="Take notes" value="Start writing.." disabled state="normal"> </fw-textarea>
+    <fw-textarea cols="24" rows="5" label="Take notes" value="Start writing.." disabled state="normal"> </fw-textarea>
 
     <span>
       <fw-button color="secondary" id="note-save">Save</fw-button>
@@ -17,33 +17,6 @@
   </body>
   <script type="module" src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js"></script>
   <script nomodule src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.js"></script>
-  <script defer>
-    var client;
-    (async function init() {
-      client = app.initialized();
-    })();
-  </script>
-</html>
 
-<!--
-<html>
-  <head>
-
-    <script src="app.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="stylesheet" type="text/css" href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css" />
-  </head>
-  <body>
-    <div class="fw-widget-wrapper">
-      <b>Enter your note here</b>
-      <textarea class="form-control" placeholder="Note here" id="note"></textarea>
-      <div class="action-holder">
-        <span>
-          <button class="btn btn-primary" id="note-save">Save</button>
-          <button class="btn btn-danger" id="note-delete">Delete</button>
-        </span>
-      </div>
-    </div>
-  </body>
+  <script defer src="./scripts/refactored-app.js"></script>
 </html>
--->
