@@ -1,9 +1,16 @@
-textarea.form-control {
-  color: #183247;
-	background-color: transparent;
-  margin-top: 10px;
+html {
+  box-sizing: border-box;
 }
 
-.action-holder {
-  margin-top: 10px
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+section{
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
 }
