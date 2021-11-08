@@ -1,4 +1,3 @@
-
 /**
  * @desc - This app allows you to save a memo linked to the ticket
  * @info - https://developers.freshdesk.com/v2/docs/data-storage/
@@ -12,63 +11,74 @@ function q(selector, context = document) {
 
 document.addEventListener('DOMContentLoaded', () => {
   (function () {
-    app.initialized(_client).then(() => {
-      window.client = _client;
-      client.events.on('app.activated', () => {
-        fetchInfo(() => {
-          displayNote();
-          q("#note-save").addEventListener('click', () => {
-            savenote();
-          });
-          q("#note-delete").addEventListener('click', () => {
-            deletenote();
+    app.initialized(_client).then(
+      () => {
+        window.client = _client;
+        client.events.on('app.activated', () => {
+          fetchInfo(() => {
+            displayNote();
+            q('#note-save').addEventListener('click', () => {
+              savenote();
+            });
+            q('#note-delete').addEventListener('click', () => {
+              deletenote();
+            });
           });
         });
-      })
-    }, (err) => {
-      showerror(err);
-    });
-
+      },
+      (err) => {
+        showerror(err);
+      }
+    );
 
     function showerror(err) {
-      client.interface.trigger("showNotify", {
-        type: "warning", title: "Warning",
-        message: `Error: App is facing issues during initialzation - ${err}`
-      }).then(function (data) {
-        console.info(`Err: Interface API - ${data}`);
-      }).catch(function (error) {
-        console.error(`Some error Encountered: ${error}`);
-      });
+      client.interface
+        .trigger('showNotify', {
+          type: 'warning',
+          title: 'Warning',
+          message: `Error: App is facing issues during initialzation - ${err}`
+        })
+        .then(function (data) {
+          console.info(`Err: Interface API - ${data}`);
+        })
+        .catch(function (error) {
+          console.error(`Some error Encountered: ${error}`);
+        });
     }
 
     function savenote() {
-      q("#note-save").addEventListener('click', () => {
-        var noteData = q("#note").value;
+      q('#note-save').addEventListener('click', () => {
+        var noteData = q('#note').value;
         if (noteData == '') {
           notify('warning', 'Note is empty');
           return;
         }
-        client.db.set(noteKey, { note: noteData }).then(() => {
-          notify('success', 'Note has been stored');
-        }, () => {
-          notify('danger', 'Error storing the note');
-        });
+        client.db.set(noteKey, { note: noteData }).then(
+          () => {
+            notify('success', 'Note has been stored');
+          },
+          () => {
+            notify('danger', 'Error storing the note');
+          }
+        );
       });
     }
 
     function deletenote() {
-      client.db.delete(noteKey)
-        .then(function () {
-          q("#note").value = '';
+      client.db.delete(noteKey).then(
+        function () {
+          q('#note').value = '';
           notify('success', 'Note has been deleted');
-        }, function () {
+        },
+        function () {
           notify('danger', 'Error deleting the note');
-        });
+        }
+      );
     }
 
     function displayNote() {
       client.db.get(noteKey).then((data) => {
-        q("#note").value = data.note;
+        q('#note').value = data.note;
       });
     }
 
