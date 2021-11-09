@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Storage Demo</title>
+    <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+  </head>
+
+  <body>
+    <section>
+      <fw-textarea class="note" cols="24" rows="5" label="Take notes" value="Start writing.." state="normal">
+      </fw-textarea>
+
+      <span>
+        <fw-button color="secondary" class="note-save">Save</fw-button>
+        <fw-button color="danger" class="note-delete">Delete</fw-button>
+      </span>
+    </section>
+  </body>
+  <script type="module" src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.js"></script>
+
+  <script defer src="./scripts/app.js"></script>
+</html>

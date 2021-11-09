@@ -4,10 +4,14 @@
     "freshdesk": {
       "location": {
         "ticket_sidebar": {
-          "url": "template.html",
-          "icon": "icon.svg"
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
         }
       }
     }
+  },
+  "engines": {
+    "node": "12.22.7",
+    "fdk": "7.1.0"
   }
 }
