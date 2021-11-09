@@ -11,13 +11,13 @@ var noteKey, client;
 
   noteKey = `${agentId}:${ticketId}`;
 
-  pick('.note-save').addEventListener('click', savenotes);
-  pick('.note-delete').addEventListener('click', deletenotes);
+  pick('.note-save').addEventListener('click', saveNotes);
+  pick('.note-delete').addEventListener('click', deleteNotes);
 
   client.events.on('app.activated', setup);
 })();
 
-async function savenotes() {
+async function saveNotes() {
   let notes = pick('.note').value;
   if (notes) {
     await to(client.db.set(noteKey, { notes }));
@@ -27,7 +27,7 @@ async function savenotes() {
   }
 }
 
-async function deletenotes() {
+async function deleteNotes() {
   let [err] = await to(client.db.delete(noteKey));
   if (err) {
     showNoticeToUser('error', 'DB — ', 'Not able to Delete');
